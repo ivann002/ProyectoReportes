@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.18.1.final using JasperReports Library version 6.18.1-9d75d1969e774d4f179fb3be8401e98a0e6d1611  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="primerReporte" pageWidth="642" pageHeight="842" columnWidth="602" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1182bb4a-e98a-4b5e-8264-9f7650dc80df">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Adaptador Maria"/>
+	<style name="Style1" mode="Opaque">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2==0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#D6D6D6"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="Parametro1" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT nombre,
+	apellidos,
+	numero_nfc,
+	fecha,
+	saldo,
+	is_activated
+FROM noinch.nfc_clientes
+where numero_nfc =  $P{Parametro1} ]]>
+	</queryString>
+	<field name="nombre" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nombre"/>
+		<property name="com.jaspersoft.studio.field.label" value="nombre"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="nfc_clientes"/>
+	</field>
+	<field name="apellidos" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="apellidos"/>
+		<property name="com.jaspersoft.studio.field.label" value="apellidos"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="nfc_clientes"/>
+	</field>
+	<field name="numero_nfc" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="numero_nfc"/>
+		<property name="com.jaspersoft.studio.field.label" value="numero_nfc"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="nfc_clientes"/>
+	</field>
+	<field name="fecha" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="fecha"/>
+		<property name="com.jaspersoft.studio.field.label" value="fecha"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="nfc_clientes"/>
+	</field>
+	<field name="saldo" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="saldo"/>
+		<property name="com.jaspersoft.studio.field.label" value="saldo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="nfc_clientes"/>
+	</field>
+	<field name="is_activated" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="is_activated"/>
+		<property name="com.jaspersoft.studio.field.label" value="is_activated"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="nfc_clientes"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="55" splitType="Stretch">
+			<image>
+				<reportElement x="20" y="0" width="178" height="50" uuid="5f40e546-e6ec-414f-9022-6d71cbc3ef1a"/>
+				<imageExpression><![CDATA["C:/Users/usuario/Desktop/Detodo/1366_521.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="220" y="12" width="180" height="30" uuid="4457f682-bff6-4070-8220-94c68c029850"/>
+				<textElement textAlignment="Center">
+					<font fontName="Agency FB" size="22"/>
+				</textElement>
+				<text><![CDATA[Usos NFC]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="40" splitType="Stretch">
+			<staticText>
+				<reportElement x="210" y="4" width="100" height="30" uuid="7a11aa84-c61f-4310-b9ec-c26ada616686"/>
+				<text><![CDATA[numero_nfc]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="Style1" x="310" y="4" width="100" height="30" uuid="47ae1cc5-8404-4583-a75a-681a1ed871b1"/>
+				<textFieldExpression><![CDATA[$F{numero_nfc}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="160" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="10" width="400" height="140" uuid="267daa3d-c0a4-487d-9cb5-c03b55951c79"/>
+				<subreportParameter name="Parametro1">
+					<subreportParameterExpression><![CDATA[$F{numero_nfc}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["Blank_Letter_Landscape.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="50" splitType="Stretch">
+			<textField>
+				<reportElement x="500" y="0" width="24" height="30" uuid="903fce82-c687-44ff-91b6-0e7e0b44d840"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="550" y="0" width="50" height="30" uuid="17457845-7dad-434e-80d2-0bcc05bb3aa9"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="526" y="0" width="24" height="30" uuid="510aff47-14ca-4cce-a61d-3b2ba0fb0316"/>
+				<text><![CDATA[de]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="33" splitType="Stretch"/>
+	</summary>
+</jasperReport>

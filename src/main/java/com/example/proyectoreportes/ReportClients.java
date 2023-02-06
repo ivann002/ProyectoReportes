@@ -21,7 +21,7 @@ public class ReportClients extends JFrame {
         conexionBBDD = DriverManager.getConnection(servidor, usuario, passwd);
 
         //  Block of code to try
-        String reportSrcFile = "src/main/java/com/example/javafxjasperreport/Clientes.jrxml";
+        String reportSrcFile = "src/main/resources/reportes/primerReporte.jrxml";
 
         // First, compile jrxml file.
         JasperReport jasperReport = JasperCompileManager.compileReport(reportSrcFile);
@@ -50,20 +50,14 @@ public class ReportClients extends JFrame {
         String passwd = "adminer";
 
         Connection conexionBBDD;
-        // Nos conectamos
+
         conexionBBDD = DriverManager.getConnection(servidor, usuario, passwd);
 
-        //  Block of code to try
-        String reportSrcFile = "src/main/java/com/example/javafxjasperreport/MaestroClientes.jrxml";
-        String subReportSrcFile = "src/main/java/com/example/javafxjasperreport/SubreportPedidos.jrxml";
+        String reportSrcFile = "src/main/java/com/example/proyectoreportes/reportes/primerReporte.jrxml";
+        String subReportSrcFile = "src/main/java/com/example/proyectoreportes/reportes/segundoReporte.jrxml";
 
-        // First, compile jrxml file.
         JasperReport jasperReport = JasperCompileManager.compileReport(reportSrcFile);
         JasperReport jasperSubReport = JasperCompileManager.compileReport(subReportSrcFile);
-
-
-        // Debemos pasar el subreport como un parámetro para que se muestre correctamente el informe
-        // El parámetro debe estar definido como del tipo net.sf.jasperreports.engine.JasperReport
 
         HashMap<String, Object> parameters = new HashMap<String, Object>();
 

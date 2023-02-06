@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.18.1.final using JasperReports Library version 6.18.1-9d75d1969e774d4f179fb3be8401e98a0e6d1611  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_Letter_Landscape" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="bd1d2644-2703-49fa-b749-4e7f60ac6005">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Adaptador Maria"/>
+	<parameter name="Parametro1" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT noinch.nfc_uso.`numeroNFC`,
+	noinch.nfc_uso.`numeroOperacion`,
+	noinch.nfc_uso.cantidad,
+	noinch.nfc_uso.fecha,
+	noinch.nfc_uso.metodo,
+	noinch.nfc_uso.lugar,
+	noinch.nfc_clientes.numero_nfc
+FROM noinch.nfc_uso
+	INNER JOIN noinch.nfc_clientes ON 
+	 noinch.nfc_uso.`numeroNFC` = noinch.nfc_clientes.numero_nfc
+	 Where  noinch.nfc_uso.`numeroNFC` =  $P{Parametro1} ]]>
+	</queryString>
+	<field name="numeroNFC" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="numeroNFC"/>
+		<property name="com.jaspersoft.studio.field.label" value="numeroNFC"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="nfc_uso"/>
+	</field>
+	<field name="numeroOperacion" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="numeroOperacion"/>
+		<property name="com.jaspersoft.studio.field.label" value="numeroOperacion"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="nfc_uso"/>
+	</field>
+	<field name="cantidad" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="cantidad"/>
+		<property name="com.jaspersoft.studio.field.label" value="cantidad"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="nfc_uso"/>
+	</field>
+	<field name="fecha" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="fecha"/>
+		<property name="com.jaspersoft.studio.field.label" value="fecha"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="nfc_uso"/>
+	</field>
+	<field name="metodo" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="metodo"/>
+		<property name="com.jaspersoft.studio.field.label" value="metodo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="nfc_uso"/>
+	</field>
+	<field name="lugar" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="lugar"/>
+		<property name="com.jaspersoft.studio.field.label" value="lugar"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="nfc_uso"/>
+	</field>
+	<field name="numero_nfc" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="numero_nfc"/>
+		<property name="com.jaspersoft.studio.field.label" value="numero_nfc"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="nfc_clientes"/>
+	</field>
+	<variable name="Variable_1" class="java.lang.String">
+		<variableExpression><![CDATA[$F{cantidad}]]></variableExpression>
+	</variable>
+	<group name="numero_nfc">
+		<groupExpression><![CDATA[$F{numero_nfc}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="37" splitType="Stretch">
+			<staticText>
+				<reportElement x="80" y="3" width="100" height="30" uuid="e047f44a-c485-412a-87b8-7fcf1047275f"/>
+				<text><![CDATA[numeroOperacion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="380" y="3" width="100" height="30" uuid="1fc2caeb-aafa-453d-adca-8ef4159e3c1c"/>
+				<text><![CDATA[cantidad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="226" y="3" width="100" height="30" uuid="89787f86-bedb-4e79-939d-cc2bd6562347"/>
+				<text><![CDATA[fecha]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="42" splitType="Stretch">
+			<textField>
+				<reportElement x="380" y="0" width="100" height="30" uuid="3b90f8a6-d91f-403b-9e92-44987504216d"/>
+				<textFieldExpression><![CDATA[$F{cantidad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="226" y="0" width="100" height="30" uuid="23da1aae-92ac-416e-9941-a4dd76462233"/>
+				<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="80" y="0" width="100" height="30" uuid="2d15125b-0368-42d4-992d-db458aeaa4b9"/>
+				<textFieldExpression><![CDATA[$F{numeroOperacion}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
